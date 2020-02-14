@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var starWarsSearchBar: UISearchBar!
     @IBOutlet weak var resultSearchTableView: UITableView!
     
+    var currentTask: URLSessionDataTask?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +30,26 @@ class ViewController: UIViewController {
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText:
         String) {
+        
+        let url = URL(string:
+        "https://swapi.co/api/people/1/")!
+        print("Begin")
+        self.currentTask?.cancel()
+        self.currentTask = URLSession.shared.dataTask(with: url) { (data,
+        response, error) in
+            let jsonDecoder = JSONDecoder()
+            print("Try")
+            if let data = data,
+                let char = try? jsonDecoder.decode(Character.self, from: data) {
+                print("Try")
+                print(char)
+            }
+            
+        }
+        self.currentTask?.resume()
+        print("End")
+        
+
         resultSearchTableView.reloadData()
         
     }
@@ -60,7 +82,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        self.performSegue(withIdentifier: "showDetailCharInformation", sender: tableView.cellForRow(at: indexPath))
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showDetailCharInformation") {
+        }
+    }
 }
 

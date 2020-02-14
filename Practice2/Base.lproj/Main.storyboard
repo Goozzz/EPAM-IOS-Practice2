@@ -43,19 +43,7 @@
                                         <string>Title</string>
                                     </scopeButtonTitles>
                                 </searchBar>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="P8L-Eq-PJN">
-                                        <rect key="frame" x="20" y="111.5" width="374" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P8L-Eq-PJN" id="Zb4-fS-g3u">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="783-Hw-NuK" kind="show" id="UrD-i8-eZZ"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
+                                <sections/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -71,6 +59,7 @@
                     <connections>
                         <outlet property="resultSearchTableView" destination="fxF-yu-bB5" id="quc-ME-Fda"/>
                         <outlet property="starWarsSearchBar" destination="Zel-gI-5o9" id="4YV-RB-zKM"/>
+                        <segue destination="783-Hw-NuK" kind="show" identifier="showDetailCharInformation" id="N9I-oM-9cf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
