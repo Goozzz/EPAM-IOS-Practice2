@@ -83,6 +83,7 @@
 		AA49970823F8533D00B2A3CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,6 +98,7 @@
 		AA49970E23F87AF600B2A3CF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AAF2A3E223F46CAC00990EF3 /* ViewController.swift */,
 				AA49971023F87E7700B2A3CF /* DetailInfoViewController.swift */,
 			);
 			path = Controllers;
@@ -105,8 +107,28 @@
 		AA49970F23F87B0500B2A3CF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA4996F623F53DDA00B2A3CF /* SearchTableViewCell */,
+				AAF2A3E423F46CAC00990EF3 /* Main.storyboard */,
+				AAF2A3E923F46CAD00990EF3 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AA49971223F8983B00B2A3CF /* BaseAppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				AAF2A3DE23F46CAC00990EF3 /* AppDelegate.swift */,
+				AAF2A3E023F46CAC00990EF3 /* SceneDelegate.swift */,
+			);
+			path = BaseAppDelegate;
+			sourceTree = "<group>";
+		};
+		AA49971323F8985B00B2A3CF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				AAF2A3E723F46CAD00990EF3 /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		AAF2A3D223F46CAC00990EF3 = {
@@ -128,20 +150,14 @@
 		AAF2A3DD23F46CAC00990EF3 /* Practice2 */ = {
 			isa = PBXGroup;
 			children = (
-				AAF2A3DE23F46CAC00990EF3 /* AppDelegate.swift */,
-				AAF2A3E023F46CAC00990EF3 /* SceneDelegate.swift */,
-				AAF2A3E223F46CAC00990EF3 /* ViewController.swift */,
-				AAF2A3E423F46CAC00990EF3 /* Main.storyboard */,
+				AA49971323F8985B00B2A3CF /* Resource */,
+				AA49971223F8983B00B2A3CF /* BaseAppDelegate */,
 				AA49970523F8488B00B2A3CF /* Network */,
 				AA49970223F8460C00B2A3CF /* Utilities */,
 				AA49970F23F87B0500B2A3CF /* Views */,
 				AA49970E23F87AF600B2A3CF /* Controllers */,
 				AA49970923F862F400B2A3CF /* Extensions */,
 				AA49970823F8533D00B2A3CF /* Models */,
-				AA4996F623F53DDA00B2A3CF /* SearchTableViewCell */,
-				AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */,
-				AAF2A3E723F46CAD00990EF3 /* Assets.xcassets */,
-				AAF2A3E923F46CAD00990EF3 /* LaunchScreen.storyboard */,
 				AAF2A3EC23F46CAD00990EF3 /* Info.plist */,
 			);
 			path = Practice2;
