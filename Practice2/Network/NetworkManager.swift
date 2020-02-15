@@ -48,15 +48,13 @@ class NetWorkManager {
                 return
             }
             
-            if let data = data {
-                if let charList = try?
+            if let data = data, let charList = try?
                     JSONDecoder().decode(CharacterList.self, from: data) {
                     if(charList.charList.isEmpty) {
                         return
                     }
                     request.dataUpdater.updateSearchTableView(charList: charList.charList)
                 }
-            }
         }
         self.setTimer()
         self.resumeCurrentTask()
