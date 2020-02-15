@@ -10,6 +10,8 @@
 		AA4996FB23F53E4900B2A3CF /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4996F923F53E4900B2A3CF /* SearchTableViewCell.swift */; };
 		AA4996FC23F53E4900B2A3CF /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4996FA23F53E4900B2A3CF /* SearchTableViewCell.xib */; };
 		AA4996FE23F57B0900B2A3CF /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */; };
+		AA49970123F83F1600B2A3CF /* NetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970023F83F1600B2A3CF /* NetWorkManager.swift */; };
+		AA49970423F846AF00B2A3CF /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970323F846AF00B2A3CF /* SearchManager.swift */; };
 		AAF2A3DF23F46CAC00990EF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF2A3DE23F46CAC00990EF3 /* AppDelegate.swift */; };
 		AAF2A3E123F46CAC00990EF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF2A3E023F46CAC00990EF3 /* SceneDelegate.swift */; };
 		AAF2A3E323F46CAC00990EF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF2A3E223F46CAC00990EF3 /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 		AA4996F923F53E4900B2A3CF /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		AA4996FA23F53E4900B2A3CF /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		AA49970023F83F1600B2A3CF /* NetWorkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkManager.swift; sourceTree = "<group>"; };
+		AA49970323F846AF00B2A3CF /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		AAF2A3DB23F46CAC00990EF3 /* Practice2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF2A3DE23F46CAC00990EF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAF2A3E023F46CAC00990EF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +56,23 @@
 			path = SearchTableViewCell;
 			sourceTree = "<group>";
 		};
+		AA4996FF23F83EDF00B2A3CF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AA49970023F83F1600B2A3CF /* NetWorkManager.swift */,
+			);
+			name = Network;
+			path = ../Network;
+			sourceTree = "<group>";
+		};
+		AA49970223F8460C00B2A3CF /*  Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AA49970323F846AF00B2A3CF /* SearchManager.swift */,
+			);
+			path = " Utilities";
+			sourceTree = "<group>";
+		};
 		AAF2A3D223F46CAC00990EF3 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +96,8 @@
 				AAF2A3E023F46CAC00990EF3 /* SceneDelegate.swift */,
 				AAF2A3E223F46CAC00990EF3 /* ViewController.swift */,
 				AAF2A3E423F46CAC00990EF3 /* Main.storyboard */,
+				AA4996FF23F83EDF00B2A3CF /* Network */,
+				AA49970223F8460C00B2A3CF /*  Utilities */,
 				AA4996F623F53DDA00B2A3CF /* SearchTableViewCell */,
 				AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */,
 				AAF2A3E723F46CAD00990EF3 /* Assets.xcassets */,
@@ -157,7 +180,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAF2A3E323F46CAC00990EF3 /* ViewController.swift in Sources */,
+				AA49970423F846AF00B2A3CF /* SearchManager.swift in Sources */,
 				AA4996FE23F57B0900B2A3CF /* CharacterModel.swift in Sources */,
+				AA49970123F83F1600B2A3CF /* NetWorkManager.swift in Sources */,
 				AA4996FB23F53E4900B2A3CF /* SearchTableViewCell.swift in Sources */,
 				AAF2A3DF23F46CAC00990EF3 /* AppDelegate.swift in Sources */,
 				AAF2A3E123F46CAC00990EF3 /* SceneDelegate.swift in Sources */,
