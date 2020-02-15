@@ -30,15 +30,27 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showDetailCharInformation") {
+            print("yes")
+            if let cell = sender as? SearchTableViewCell,
+                let name = cell.myLabel?.text,
+                let destination = segue.destination as? DetailInfoViewController {
+                let char = characterKeeper.findByName(name: name)
+                destination.setChar(char: char)
+            }
         }
     }
 }
 
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText:String) {
+        if (searchText == "") {
+            characterKeeper.setCharacterList(charList: [])
+            self.resultSearchTableView.reloadData()
+            return
+        }
         
         let searchRequest = SearchRequest(searchText: searchText, updater: self)
-        searchManager.search(request: searchRequest)
+        self.searchManager.search(request: searchRequest)
     }
 }
 

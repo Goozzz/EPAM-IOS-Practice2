@@ -29,6 +29,17 @@ struct Character: Codable {
         case gender = "gender"
     }
     
+    init() {
+        self.name = ""
+        self.height = ""
+        self.mass = ""
+        self.hairColor = ""
+        self.skinColor = ""
+        self.eyeColor = ""
+        self.birthYear = ""
+        self.gender = ""
+    }
+    
     init(from decoder: Decoder) throws {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -65,6 +76,19 @@ class CharacterKeeper {
     
     func getCharNameAtIndex(index: Int) -> String {
         return characterList?[index].name ?? ""
+    }
+    
+    func findByName(name: String) -> Character {
+        guard let list = self.characterList else {
+            return Character()
+        }
+        for char in list {
+            if char.name == name {
+                return char
+            }
+        }
+        
+        return Character()
     }
 }
 
