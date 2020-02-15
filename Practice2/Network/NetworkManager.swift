@@ -11,7 +11,7 @@ import Foundation
 class NetWorkManager {
     
     private let STAR_WARS_SEARCH_URL = "https://swapi.co/api/people/?search="
-    private let MAX_SEARCH_DELAY = 30
+    private let MAX_SEARCH_DELAY = 30.0
     
     private weak var currentTask: URLSessionDataTask?
     private weak var currentTaskTimer: Timer?
@@ -20,11 +20,16 @@ class NetWorkManager {
         self.currentTask = task
     }
     
-    private func setTimer(delay: Int) {
-        
+    private func setTimer() {
+        self.currentTaskTimer?.invalidate()
+        self.currentTaskTimer = nil
+        self.currentTaskTimer = Timer.scheduledTimer(timeInterval: self.MAX_SEARCH_DELAY, target: self, selector: #selector(self.cancelCurrentTask), userInfo: nil, repeats: false)
     }
     
-    func cancelCurrentTask() {
+    @objc func cancelCurrentTask() {
+        self.currentTaskTimer?.invalidate()
+        self.currentTaskTimer = nil
+        print("canceled")
         self.currentTask?.cancel()
     }
     
@@ -40,7 +45,6 @@ class NetWorkManager {
         self.currentTask = URLSession.shared.dataTask(with: url) { (data,
         response, error) in
             if error != nil {
-                
                 return
             }
             
@@ -54,6 +58,7 @@ class NetWorkManager {
                 }
             }
         }
+        self.setTimer()
         self.resumeCurrentTask()
     }
 }
