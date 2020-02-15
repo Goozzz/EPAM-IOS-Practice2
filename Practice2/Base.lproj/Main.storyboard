@@ -31,9 +31,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fxF-yu-bB5">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fxF-yu-bB5">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="Zel-gI-5o9">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -183,6 +183,7 @@
                             <constraint firstItem="eqP-Pq-pdM" firstAttribute="leading" secondItem="eAc-o1-SQV" secondAttribute="trailing" constant="10" id="his-Ee-xIH"/>
                             <constraint firstItem="eAc-o1-SQV" firstAttribute="top" secondItem="gx1-pO-yFB" secondAttribute="top" constant="55" id="hjf-RA-fSf"/>
                             <constraint firstItem="eAc-o1-SQV" firstAttribute="top" secondItem="mGq-W1-XE7" secondAttribute="bottom" constant="8" id="tQV-hS-7Zu"/>
+                            <constraint firstItem="gx1-pO-yFB" firstAttribute="trailing" secondItem="mGq-W1-XE7" secondAttribute="trailing" constant="323" id="ziR-OA-MAw"/>
                             <constraint firstItem="eAc-o1-SQV" firstAttribute="leading" secondItem="gx1-pO-yFB" secondAttribute="leading" constant="20" id="zwg-sn-LNE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gx1-pO-yFB"/>
