@@ -10,12 +10,18 @@ import Foundation
 
 class NetWorkManager {
     
-    private let STAR_WARS_SEARCH_URL = "https://swapi.co/api/"
+    private let STAR_WARS_SEARCH_URL = "https://swapi.co/api/people/?search="
+    private let MAX_SEARCH_DELAY = 30
     
-    private var currentTask: URLSessionDataTask?
+    private weak var currentTask: URLSessionDataTask?
+    private weak var currentTaskTimer: Timer?
     
     private func setTask(task: URLSessionDataTask) {
         self.currentTask = task
+    }
+    
+    private func setTimer(delay: Int) {
+        
     }
     
     func cancelCurrentTask() {
@@ -26,22 +32,25 @@ class NetWorkManager {
         self.currentTask?.resume()
     }
     
-    func searchCharacter(searchText: String) {
-        let url = URL(string: "\(STAR_WARS_SEARCH_URL)\(searchText)")!
+    func searchCharacter(request: SearchRequest) {
+        let url = URL(string: "\(STAR_WARS_SEARCH_URL)\(request.searchText)")!
         
         self.cancelCurrentTask()
         
         self.currentTask = URLSession.shared.dataTask(with: url) { (data,
         response, error) in
-            let jsonDecoder = JSONDecoder()
-        
+            if error != nil {
+                
+                return
+            }
+            
             if let data = data {
                 if let charList = try?
-                    jsonDecoder.decode(CharacterList.self, from: data) {
+                    JSONDecoder().decode(CharacterList.self, from: data) {
                     if(charList.charList.isEmpty) {
                         return
                     }
-                    print(charList.charList[0].name)
+                    request.dataHandler(charList.charList)
                 }
             }
         }

@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class SearchRequest {
+    var searchText: String
+    var dataHandler: ([Character]) -> ()
+    
+    init(searchText: String, handler: @escaping ([Character]) -> ())  {
+        self.searchText = searchText
+        self.dataHandler = handler
+    }
+}

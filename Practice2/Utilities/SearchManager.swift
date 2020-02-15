@@ -9,17 +9,35 @@
 import Foundation
 
 protocol SearchData {
-    func search(searchText: String, dataHandler: () -> ());
+    func search(request: SearchRequest);
 }
 
 class SearchManager: SearchData {
+    private let SEARCH_DELAY = 1.0
+    
     private let networkManager: NetWorkManager
+    private var delayer: SearchDelayer?
     
     init() {
         self.networkManager = NetWorkManager()
     }
     
-    func search(searchText: String, dataHandler: () -> ()) {
-        self.networkManager.searchCharacter(searchText: searchText, dataHandler: dataHandler)
+    func search(request: SearchRequest) {
+        if self.delayer != nil {
+            configDelayer(delayedFunc: networkManager.searchCharacter(request:),
+                          request: request)
+        } else {
+            self.delayer = SearchDelayer(delay: self.SEARCH_DELAY,
+                                         delayedFunc: networkManager.searchCharacter(request:),
+                                         request: request)
+        }
+        
+        self.delayer?.call()
+    }
+    
+    func configDelayer(delayedFunc: @escaping (SearchRequest) -> (), request: SearchRequest) {
+        self.delayer?.config(delay: self.SEARCH_DELAY,
+                             delayedFunc: delayedFunc,
+                             request: request)
     }
 }

@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultSearchTableView: UITableView!
     
     var currentTask: URLSessionDataTask?
+    let characterKeeper = CharacterKeeper()
+    let searchManager = SearchManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,43 +27,24 @@ class ViewController: UIViewController {
         resultSearchTableView.delegate = self
         resultSearchTableView.dataSource = self
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showDetailCharInformation") {
+        }
+    }
 }
 
 extension ViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText:
-        String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText:String) {
         
-        let url = URL(string:
-        "https://swapi.co/api/people/1/")!
-        print("Begin")
-        self.currentTask?.cancel()
-        self.currentTask = URLSession.shared.dataTask(with: url) { (data,
-        response, error) in
-            let jsonDecoder = JSONDecoder()
-            print("Try")
-            if let data = data,
-                let char = try? jsonDecoder.decode(Character.self, from: data) {
-                print("Try")
-                print(char)
-            }
-            
-        }
-        self.currentTask?.resume()
-        print("End")
-        
-
-        resultSearchTableView.reloadData()
-        
+        let searchRequest = SearchRequest(searchText: searchText, handler: updateSearchTableView(charList:))
+        searchManager.search(request: searchRequest)
     }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
-    }
-    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return characterKeeper.getCharacterlist().count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -76,8 +59,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "SearchTableViewCell", for: indexPath)
             as? SearchTableViewCell else { return UITableViewCell() }
-        
-        cell.prepareForAppear(text: "Bob")
+        cell.prepareForAppear(text: characterKeeper.getCharNameAtIndex(index: indexPath.row))
         return cell
     }
     
@@ -85,9 +67,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: false)
         self.performSegue(withIdentifier: "showDetailCharInformation", sender: tableView.cellForRow(at: indexPath))
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showDetailCharInformation") {
+}
+
+extension ViewController {
+    func updateSearchTableView(charList: [Character]) {
+        characterKeeper.setCharacterList(charList: charList)
+        DispatchQueue.main.async {
+            self.resultSearchTableView.reloadData()
         }
     }
 }
