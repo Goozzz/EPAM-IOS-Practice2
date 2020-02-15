@@ -43,3 +43,28 @@ struct Character: Codable {
     }
 }
 
+struct CharacterList: Codable {
+    let charList: [Character]
+    
+    enum CodingKeys: String, CodingKey {
+        case charList = "results"
+    }
+    
+}
+
+class CharacterKeeper {
+    private var characterList: [Character]?
+    
+    func setCharacterList(charList: [Character]) {
+        self.characterList = charList
+    }
+    
+    func getCharacterlist() -> [Character] {
+        return self.characterList ?? []
+    }
+    
+    func getCharNameAtIndex(index: Int) -> String {
+        return characterList?[index].name ?? ""
+    }
+}
+
