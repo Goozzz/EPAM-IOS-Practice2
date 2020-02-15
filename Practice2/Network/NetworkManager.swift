@@ -1,12 +1,10 @@
 //
-//  SearchNetWorkManager.swift
+//  NetworkManager.swift
 //  Practice2
 //
 //  Created by Евгений Гусев on 15.02.2020.
 //  Copyright © 2020 Евгений Гусев. All rights reserved.
 //
-
-
 
 import Foundation
 
@@ -43,7 +41,6 @@ class NetWorkManager {
                     if(charList.charList.isEmpty) {
                         return
                     }
-                    
                     print(charList.charList[0].name)
                 }
             }
