@@ -50,7 +50,7 @@ class NetWorkManager {
                     if(charList.charList.isEmpty) {
                         return
                     }
-                    request.dataHandler(charList.charList)
+                    request.dataUpdater.updateSearchTableView(charList: charList.charList)
                 }
             }
         }

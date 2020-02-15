@@ -10,10 +10,10 @@ import Foundation
 
 class SearchRequest {
     var searchText: String
-    var dataHandler: ([Character]) -> ()
+    var dataUpdater: DataUpdater
     
-    init(searchText: String, handler: @escaping ([Character]) -> ())  {
+    init(searchText: String, updater: DataUpdater)  {
         self.searchText = searchText
-        self.dataHandler = handler
+        self.dataUpdater = updater
     }
 }

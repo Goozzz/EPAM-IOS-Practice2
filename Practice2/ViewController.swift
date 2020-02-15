@@ -37,7 +37,7 @@ class ViewController: UIViewController {
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText:String) {
         
-        let searchRequest = SearchRequest(searchText: searchText, handler: updateSearchTableView(charList:))
+        let searchRequest = SearchRequest(searchText: searchText, updater: self)
         searchManager.search(request: searchRequest)
     }
 }
@@ -69,7 +69,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ViewController {
+protocol DataUpdater: class {
+    func updateSearchTableView(charList: [Character]);
+}
+
+extension ViewController: DataUpdater {
     func updateSearchTableView(charList: [Character]) {
         characterKeeper.setCharacterList(charList: charList)
         DispatchQueue.main.async {
