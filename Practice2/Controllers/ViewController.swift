@@ -40,46 +40,6 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText:String) {
-        if (searchText == "") {
-            characterKeeper.setCharacterList(charList: [])
-            self.resultSearchTableView.reloadData()
-            return
-        }
-        
-        let searchRequest = SearchRequest(searchText: searchText, updater: self)
-        self.searchManager.search(request: searchRequest)
-    }
-}
-
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characterKeeper.getCharacterlist().count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(section == 0) {
-            return "Search"
-        }
-        
-        return nil
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "SearchTableViewCell", for: indexPath)
-            as? SearchTableViewCell else { return UITableViewCell() }
-        cell.prepareForAppear(text: characterKeeper.getCharNameAtIndex(index: indexPath.row))
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        self.performSegue(withIdentifier: "showDetailCharInformation", sender: tableView.cellForRow(at: indexPath))
-    }
-}
-
 protocol DataUpdater: class {
     func updateSearchTableView(charList: [Character]);
 }
