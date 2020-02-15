@@ -29,7 +29,6 @@ class NetWorkManager {
     @objc func cancelCurrentTask() {
         self.currentTaskTimer?.invalidate()
         self.currentTaskTimer = nil
-        print("canceled")
         self.currentTask?.cancel()
     }
     

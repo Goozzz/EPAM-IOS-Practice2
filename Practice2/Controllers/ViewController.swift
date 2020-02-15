@@ -30,7 +30,6 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showDetailCharInformation") {
-            print("yes")
             if let cell = sender as? SearchTableViewCell,
                 let name = cell.myLabel?.text,
                 let destination = segue.destination as? DetailInfoViewController {
