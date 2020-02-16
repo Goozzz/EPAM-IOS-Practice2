@@ -38,7 +38,9 @@ class NetWorkManager {
     }
     
     func searchCharacter(request: SearchRequest) {
-        let url = URL(string: "\(STAR_WARS_SEARCH_URL)\(request.searchText)")!
+        guard let url = URL(string: "\(STAR_WARS_SEARCH_URL)\(request.searchText)") else {
+            return
+        }
         
         self.cancelCurrentTask()
         
