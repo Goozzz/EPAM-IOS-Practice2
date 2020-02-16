@@ -26,7 +26,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "SearchTableViewCell", for: indexPath)
             as? SearchTableViewCell else { return UITableViewCell() }
-        cell.prepareForAppear(text: characterKeeper.getCharNameAtIndex(index: indexPath.row))
+        cell.prepareForAppear(text: self.characterKeeper.getCharNameAtIndex(index: indexPath.row))
         return cell
     }
     

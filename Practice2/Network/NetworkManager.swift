@@ -33,6 +33,7 @@ class NetWorkManager {
     }
     
     func resumeCurrentTask() {
+        self.setTimer()
         self.currentTask?.resume()
     }
     
@@ -55,7 +56,6 @@ class NetWorkManager {
                     request.dataUpdater.updateSearchTableView(charList: charList.charList)
                 }
         }
-        self.setTimer()
         self.resumeCurrentTask()
     }
 }

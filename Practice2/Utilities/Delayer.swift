@@ -24,14 +24,19 @@ class SearchDelayer {
     
     
     func call() {
-        timer?.invalidate()
-        timer = nil
+        self.timer?.invalidate()
+        self.timer = nil
         let nextTimer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(SearchDelayer.fireNow), userInfo: nil, repeats: false)
-        timer = nextTimer
+        self.timer = nextTimer
     }
     
     @objc func fireNow() {
         self.delayedFunc(request)
+    }
+    
+    func cancelTimerFire() {
+        self.timer?.invalidate()
+        self.timer = nil
     }
     
     func config(delay:Double, delayedFunc: @escaping (SearchRequest) -> (), request: SearchRequest) {

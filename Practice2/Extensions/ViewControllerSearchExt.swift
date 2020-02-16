@@ -12,7 +12,8 @@ import UIKit
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText:String) {
         if (searchText == "") {
-            characterKeeper.setCharacterList(charList: [])
+            self.characterKeeper.setCharacterList(charList: [])
+            self.searchManager.cancelSearch()
             self.resultSearchTableView.reloadData()
             return
         }
