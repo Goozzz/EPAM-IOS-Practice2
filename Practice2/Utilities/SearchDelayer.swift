@@ -8,7 +8,13 @@
 
 import Foundation
 
-class SearchDelayer {
+protocol SearchDelayerProtocol: class {
+    func call()
+    func cancelTimerFire()
+    func config(delay:Double, delayedFunc: @escaping (SearchRequest) -> (), request: SearchRequest)
+}
+
+class SearchDelayer: SearchDelayerProtocol {
     private var delay: Double
     private weak var timer: Timer?
     private var delayedFunc: (SearchRequest) -> ()
@@ -30,7 +36,7 @@ class SearchDelayer {
         self.timer = nextTimer
     }
     
-    @objc func fireNow() {
+    @objc private func fireNow() {
         self.delayedFunc(request)
     }
     

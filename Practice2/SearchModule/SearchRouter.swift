@@ -14,9 +14,9 @@ protocol SearchRouterProtocol: class {
 }
 
 class SearchRouter: SearchRouterProtocol {
-    private weak var viewController: ViewControllerProtocol!
+    private weak var viewController: SearchViewControllerProtocol!
     
-    init(viewController: ViewControllerProtocol) {
+    init(viewController: SearchViewControllerProtocol) {
         self.viewController = viewController
     }
 }

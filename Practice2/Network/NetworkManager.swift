@@ -8,7 +8,12 @@
 
 import Foundation
 
-class NetWorkManager {
+protocol NetworkDownloadProtocol: class {
+    func downloadCharacterListFromAPI(request: SearchRequest)
+    func cancelCurrentRequest()
+}
+
+class NetWorkManager: NetworkDownloadProtocol {
     
     private let STAR_WARS_SEARCH_URL = "https://swapi.co/api/people/?search="
     private let MAX_SEARCH_DELAY = 30.0
@@ -23,26 +28,26 @@ class NetWorkManager {
     private func setTimer() {
         self.currentTaskTimer?.invalidate()
         self.currentTaskTimer = nil
-        self.currentTaskTimer = Timer.scheduledTimer(timeInterval: self.MAX_SEARCH_DELAY, target: self, selector: #selector(self.cancelCurrentTask), userInfo: nil, repeats: false)
+        self.currentTaskTimer = Timer.scheduledTimer(timeInterval: self.MAX_SEARCH_DELAY, target: self, selector: #selector(self.cancelCurrentRequest), userInfo: nil, repeats: false)
     }
     
-    @objc func cancelCurrentTask() {
+    @objc func cancelCurrentRequest() {
         self.currentTaskTimer?.invalidate()
         self.currentTaskTimer = nil
         self.currentTask?.cancel()
     }
     
-    func resumeCurrentTask() {
+    private func resumeCurrentRequest() {
         self.setTimer()
         self.currentTask?.resume()
     }
     
-    func searchCharacter(request: SearchRequest) {
+    func downloadCharacterListFromAPI(request: SearchRequest) {
         guard let url = URL(string: "\(STAR_WARS_SEARCH_URL)\(request.searchText)") else {
             return
         }
         
-        self.cancelCurrentTask()
+        self.cancelCurrentRequest()
         
         self.currentTask = URLSession.shared.dataTask(with: url) { (data,
         response, error) in
@@ -58,6 +63,6 @@ class NetWorkManager {
                     request.dataUpdater.updateSearchTableView(charList: charList.charList)
                 }
         }
-        self.resumeCurrentTask()
+        self.resumeCurrentRequest()
     }
 }

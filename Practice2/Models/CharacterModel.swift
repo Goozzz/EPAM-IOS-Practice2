@@ -63,7 +63,11 @@ struct CharacterList: Codable {
     
 }
 
-class CharacterKeeper {
+protocol CharacterPickerProtocol {
+    func getAllCharactersName() -> [String]
+}
+
+class CharacterKeeper: CharacterPickerProtocol {
     private var characterList: [Character]?
     
     func setCharacterList(charList: [Character]) {
@@ -89,6 +93,19 @@ class CharacterKeeper {
         }
         
         return Character()
+    }
+    
+    func getAllCharactersName() -> [String] {
+        guard let list = self.characterList else {
+            return []
+        }
+        var charactaresName: [String] = []
+        
+        for character in list {
+            charactaresName.append(character.name)
+        }
+        
+        return charactaresName
     }
 }
 

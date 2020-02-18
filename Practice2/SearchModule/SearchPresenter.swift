@@ -12,15 +12,17 @@ import UIKit
 protocol SearchPresenterProtocol: class {
     var interactor: SearchInteractorProtocol! {set get}
     var router: SearchRouterProtocol! {set get}
+    
+    func getAllCharacters(searchText: String)
 }
 
 class SearchPresenter: SearchPresenterProtocol {
     
-    private weak var _viewController: ViewControllerProtocol!
+    private weak var _viewController: SearchViewControllerProtocol!
     private var _interactor: SearchInteractorProtocol!
     private var _router: SearchRouterProtocol!
     
-    init(viewController: ViewControllerProtocol) {
+    init(viewController: SearchViewControllerProtocol) {
         self._viewController = viewController
     }
     
@@ -42,7 +44,12 @@ class SearchPresenter: SearchPresenterProtocol {
         }
     }
     
+    func getAllCharacters(searchText: String) {
+        self.interactor.prepareCharacterList(searchText: searchText)
+    }
     
-    
+    func showCharacters() {
+        //self._viewController.updateSearchTableView(dataList: nameList)
+    }
     
 }

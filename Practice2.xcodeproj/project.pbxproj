@@ -16,7 +16,7 @@
 		AA4996FE23F57B0900B2A3CF /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */; };
 		AA49970423F846AF00B2A3CF /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970323F846AF00B2A3CF /* SearchManager.swift */; };
 		AA49970723F848A600B2A3CF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970623F848A600B2A3CF /* NetworkManager.swift */; };
-		AA49970B23F8681600B2A3CF /* Delayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970A23F8681600B2A3CF /* Delayer.swift */; };
+		AA49970B23F8681600B2A3CF /* SearchDelayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970A23F8681600B2A3CF /* SearchDelayer.swift */; };
 		AA49970D23F86DD100B2A3CF /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970C23F86DD100B2A3CF /* SearchRequest.swift */; };
 		AA49971123F87E7700B2A3CF /* DetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49971023F87E7700B2A3CF /* DetailInfoViewController.swift */; };
 		AA49971523F89AD200B2A3CF /* ViewControllerTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49971423F89AD200B2A3CF /* ViewControllerTableExt.swift */; };
@@ -39,7 +39,7 @@
 		AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		AA49970323F846AF00B2A3CF /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		AA49970623F848A600B2A3CF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		AA49970A23F8681600B2A3CF /* Delayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delayer.swift; sourceTree = "<group>"; };
+		AA49970A23F8681600B2A3CF /* SearchDelayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelayer.swift; sourceTree = "<group>"; };
 		AA49970C23F86DD100B2A3CF /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		AA49971023F87E7700B2A3CF /* DetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoViewController.swift; sourceTree = "<group>"; };
 		AA49971423F89AD200B2A3CF /* ViewControllerTableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTableExt.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				AA49970323F846AF00B2A3CF /* SearchManager.swift */,
-				AA49970A23F8681600B2A3CF /* Delayer.swift */,
+				AA49970A23F8681600B2A3CF /* SearchDelayer.swift */,
 				AA49970C23F86DD100B2A3CF /* SearchRequest.swift */,
 			);
 			path = Utilities;
@@ -272,7 +272,7 @@
 				AA2682DF23FC000E00217B52 /* SearchRouter.swift in Sources */,
 				AAF2A3DF23F46CAC00990EF3 /* AppDelegate.swift in Sources */,
 				AA2682DA23FBFFDF00217B52 /* SearchInteractor.swift in Sources */,
-				AA49970B23F8681600B2A3CF /* Delayer.swift in Sources */,
+				AA49970B23F8681600B2A3CF /* SearchDelayer.swift in Sources */,
 				AA49970D23F86DD100B2A3CF /* SearchRequest.swift in Sources */,
 				AA49971123F87E7700B2A3CF /* DetailInfoViewController.swift in Sources */,
 				AA49971723F89AE100B2A3CF /* ViewControllerSearchExt.swift in Sources */,

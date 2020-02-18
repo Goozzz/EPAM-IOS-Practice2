@@ -9,13 +9,18 @@
 import Foundation
 
 protocol SearchInteractorProtocol: class {
-    
+    func prepareCharacterList(searchText: String) -> [String]
 }
 
 class SearchInteractor: SearchInteractorProtocol {
     private weak var presenter: SearchPresenterProtocol!
+    //private var searchManager: SearchDataProtocol = SearchManager()
     
     init(presenter: SearchPresenterProtocol) {
         self.presenter = presenter
+    }
+    
+    func prepareCharacterList(searchText: String) -> [String] {
+        return []
     }
 }

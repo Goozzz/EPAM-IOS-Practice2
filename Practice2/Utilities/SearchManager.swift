@@ -8,41 +8,37 @@
 
 import Foundation
 
-protocol SearchData {
-    func search(request: SearchRequest);
+protocol SearchDataProtocol {
+    func searchCharacterList(request: SearchRequest)
+    func cancelSearch()
 }
 
-class SearchManager: SearchData {
+class SearchManager: SearchDataProtocol {
     private let SEARCH_DELAY = 1.0
     
     private let networkManager: NetWorkManager
-    private var delayer: SearchDelayer?
+    private var delayer: SearchDelayerProtocol
     
-    init() {
+    init(request: SearchRequest) {
         self.networkManager = NetWorkManager()
+                self.delayer = SearchDelayer(delay: self.SEARCH_DELAY, delayedFunc: networkManager.downloadCharacterListFromAPI(request:), request: request)
     }
     
-    func search(request: SearchRequest) {
-        if self.delayer != nil {
-            configDelayer(delayedFunc: self.networkManager.searchCharacter(request:),
+    func searchCharacterList(request: SearchRequest) {
+        configDelayer(delayedFunc: self.networkManager.downloadCharacterListFromAPI(request:),
                           request: request)
-        } else {
-            self.delayer = SearchDelayer(delay: self.SEARCH_DELAY,
-                                         delayedFunc: self.networkManager.searchCharacter(request:),
-                                         request: request)
-        }
         
-        self.delayer?.call()
+        self.delayer.call()
     }
     
     func configDelayer(delayedFunc: @escaping (SearchRequest) -> (), request: SearchRequest) {
-        self.delayer?.config(delay: self.SEARCH_DELAY,
+        self.delayer.config(delay: self.SEARCH_DELAY,
                              delayedFunc: delayedFunc,
                              request: request)
     }
     
     func cancelSearch() {
-        self.delayer?.cancelTimerFire()
-        self.networkManager.cancelCurrentTask()
+        self.delayer.cancelTimerFire()
+        self.networkManager.cancelCurrentRequest()
     }
 }

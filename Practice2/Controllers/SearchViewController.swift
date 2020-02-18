@@ -17,12 +17,14 @@ class SearchViewController: UIViewController {
     
     var currentTask: URLSessionDataTask?
     let characterKeeper = CharacterKeeper()
-    let searchManager = SearchManager()
+    var searchManager: SearchDataProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         _configurator.config(viewController: self)
+        
+        self.searchManager = SearchManager(request: SearchRequest(searchText: "", updater: self))
 
         starWarsSearchBar.delegate = self
         
@@ -45,8 +47,10 @@ class SearchViewController: UIViewController {
     }
 }
 
-protocol ViewControllerProtocol: class {
+protocol SearchViewControllerProtocol: class {
     var presenter: SearchPresenterProtocol! {set get}
+    
+    func updateSearchTableView(dataList: [String])
 }
 
 protocol DataUpdater: class {
@@ -62,7 +66,7 @@ extension SearchViewController: DataUpdater {
     }
 }
 
-extension SearchViewController: ViewControllerProtocol {
+extension SearchViewController: SearchViewControllerProtocol {
     var presenter: SearchPresenterProtocol! {
         get {
             return _presenter
@@ -71,6 +75,11 @@ extension SearchViewController: ViewControllerProtocol {
             self._presenter = newValue
         }
     }
+    
+    func updateSearchTableView(dataList: [String]) {
+            
+    }
+    
     
     
 }
