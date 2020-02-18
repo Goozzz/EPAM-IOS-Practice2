@@ -48,7 +48,7 @@ class SearchPresenter: SearchPresenterProtocol {
     }
     
     func getAllCharacters(searchText: String) {
-        self.interactor.downloadCharacterList(searchText: searchText)
+        self.interactor.searchCharacterList(searchText: searchText)
     }
     
     func showCharacters(charactersName: [String]) {

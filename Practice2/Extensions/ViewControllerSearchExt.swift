@@ -13,7 +13,6 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText:String) {
         if (searchText == "") {
             self.characterKeeper.setCharacterList(charList: [])
-            self.searchManager?.cancelSearch()
             self.resultSearchTableView.reloadData()
             return
         }

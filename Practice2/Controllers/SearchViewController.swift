@@ -17,14 +17,11 @@ class SearchViewController: UIViewController {
     
     var currentTask: URLSessionDataTask?
     let characterKeeper = CharacterKeeper()
-    var searchManager: SearchDataProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         _configurator.config(viewController: self)
-        
-        self.searchManager = SearchManager(request: SearchRequest(searchText: "", updater: self))
 
         starWarsSearchBar.delegate = self
         

@@ -11,33 +11,25 @@ import Foundation
 protocol SearchDelayerProtocol: class {
     func call()
     func cancelTimerFire()
-    func config(delay:Double, delayedFunc: @escaping (SearchRequest) -> (), request: SearchRequest)
+    func config(delayedFunc: @escaping (String) -> (), data: String)
 }
 
 class SearchDelayer: SearchDelayerProtocol {
-    private var delay: Double
+    private let START_SEARCH_DELAY = 0.75
     private weak var timer: Timer?
-    private var delayedFunc: (SearchRequest) -> ()
+    private var delayedFunc: ((String) -> ())?
     
-    private var request: SearchRequest
-    
-    init(delay: Double, delayedFunc: @escaping (SearchRequest) -> (), request: SearchRequest) {
-        self.delay = delay
-        self.delayedFunc = delayedFunc
-        self.request = request
-        self.timer = nil
-    }
-    
+    private var data = ""
     
     func call() {
         self.timer?.invalidate()
         self.timer = nil
-        let nextTimer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(SearchDelayer.fireNow), userInfo: nil, repeats: false)
+        let nextTimer = Timer.scheduledTimer(timeInterval: self.START_SEARCH_DELAY, target: self, selector: #selector(SearchDelayer.fireNow), userInfo: nil, repeats: false)
         self.timer = nextTimer
     }
     
     @objc private func fireNow() {
-        self.delayedFunc(request)
+        self.delayedFunc?(self.data)
     }
     
     func cancelTimerFire() {
@@ -45,11 +37,10 @@ class SearchDelayer: SearchDelayerProtocol {
         self.timer = nil
     }
     
-    func config(delay:Double, delayedFunc: @escaping (SearchRequest) -> (), request: SearchRequest) {
+    func config(delayedFunc: @escaping (String) -> (), data: String) {
         self.timer?.invalidate()
         self.timer = nil
-        self.delay = delay
+        self.data = data
         self.delayedFunc = delayedFunc
-        self.request = request
     }
 }

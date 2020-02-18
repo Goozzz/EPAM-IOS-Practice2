@@ -9,10 +9,9 @@
 import Foundation
 
 protocol SearchInteractorProtocol: class {
-    func prepareCharacterList(searchText: String) -> [String]
+    func searchCharacterList(searchText: String)
     func getCharacterForCell(index: Int) -> Character
     func getNameForCell(index: Int) -> String
-    func downloadCharacterList(searchText: String)
     func getCharacterCount() -> Int
 }
 
@@ -21,16 +20,18 @@ class SearchInteractor: SearchInteractorProtocol {
     
     private let networkManager: NetworkServiceProtocol = NetWorkManager()
     private let characterService: CharacterServiceProtocol = CharacterKeeper()
+    private var delayer: SearchDelayerProtocol = SearchDelayer()
     
     init(presenter: SearchPresenterProtocol) {
         self.presenter = presenter
     }
     
-    func prepareCharacterList(searchText: String) -> [String] {
-        return []
+    func searchCharacterList(searchText: String) {
+        delayer.config(delayedFunc: self.downloadCharacterList(searchText:), data: searchText)
+        delayer.call()
     }
     
-    func downloadCharacterList(searchText: String) {
+    private func downloadCharacterList(searchText: String) {
         self.networkManager.getAllCharacters(searchText: searchText) { (data) in
             self.characterService.setCharacters(newCharacters: data)
             let listName = self.characterService.getAllCharacterName()
