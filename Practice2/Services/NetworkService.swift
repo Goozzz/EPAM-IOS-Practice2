@@ -60,8 +60,7 @@ class NetWorkManager: NetworkServiceProtocol {
             
             completion(downloadedData)
         }
-        
+
         self.resumeCurrentRequest()
-        
     }
 }

@@ -23,7 +23,6 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
         starWarsSearchBar.delegate = self
         
         let starWarsCellNib = UINib(nibName: "SearchTableViewCell", bundle: nil)
-        
         resultSearchTableView.register(starWarsCellNib, forCellReuseIdentifier: "SearchTableViewCell")
         resultSearchTableView.delegate = self
         resultSearchTableView.dataSource = self
