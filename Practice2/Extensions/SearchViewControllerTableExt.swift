@@ -23,19 +23,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "SearchTableViewCell", for: indexPath)
-            as? SearchTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:
+                        "SearchTableViewCell", for: indexPath)
+                        as? SearchTableViewCell else { return UITableViewCell() }
         
         let name = self.presenter.prepareSearchTableViewCell(index: indexPath.row)
         cell.prepareForAppear(text: name)
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        
         self.presenter.characterCellSelected(sender: self.resultSearchTableView.cellForRow(at: indexPath))
     }
 }

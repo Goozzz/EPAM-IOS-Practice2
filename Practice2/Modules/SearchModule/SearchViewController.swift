@@ -8,20 +8,17 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, SearchViewControllerProtocol {
     @IBOutlet weak var starWarsSearchBar: UISearchBar!
     @IBOutlet weak var resultSearchTableView: UITableView!
     
-    private var _presenter: SearchPresenterProtocol!
-    private var _configurator: SearchConfiguratorProtocol = SearchConfigurator()
-    
-    var currentTask: URLSessionDataTask?
-    let characterKeeper = CharacterKeeper()
+    private var configurator: SearchConfiguratorProtocol = SearchConfigurator()
+    var presenter: SearchPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _configurator.config(viewController: self)
+        configurator.config(viewController: self)
 
         starWarsSearchBar.delegate = self
         
@@ -30,6 +27,16 @@ class SearchViewController: UIViewController {
         resultSearchTableView.register(starWarsCellNib, forCellReuseIdentifier: "SearchTableViewCell")
         resultSearchTableView.delegate = self
         resultSearchTableView.dataSource = self
+    }
+    
+    func peformSegue(segueIdentifier: String, sender: Any?) {
+        self.performSegue(withIdentifier: segueIdentifier, sender: sender)
+    }
+    
+    func updateSearchTableView() {
+        DispatchQueue.main.async {
+            self.resultSearchTableView.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,32 +50,7 @@ class SearchViewController: UIViewController {
     }
 }
 
-protocol SearchViewControllerProtocol: class {
-    var presenter: SearchPresenterProtocol! {set get}
-    
-    func updateSearchTableView()
-    func peformSegue(segueIdentifier: String, sender: Any?)
-}
 
-extension SearchViewController: SearchViewControllerProtocol {
-    
-    func peformSegue(segueIdentifier: String, sender: Any?) {
-        self.performSegue(withIdentifier: segueIdentifier, sender: sender)
-    }
-    
-    var presenter: SearchPresenterProtocol! {
-        get {
-            return _presenter
-        }
-        set {
-            self._presenter = newValue
-        }
-    }
-    
-    func updateSearchTableView() {
-        DispatchQueue.main.async {
-            self.resultSearchTableView.reloadData()
-        }
-    }
-}
+
+
 

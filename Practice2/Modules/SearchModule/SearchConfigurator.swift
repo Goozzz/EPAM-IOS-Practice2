@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-protocol SearchConfiguratorProtocol: class {
-    func config(viewController: SearchViewController)
-}
-
 class SearchConfigurator: SearchConfiguratorProtocol {
     
     func config(viewController: SearchViewController) {

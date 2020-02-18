@@ -8,14 +8,6 @@
 
 import Foundation
 
-protocol SearchInteractorProtocol: class {
-    func searchCharacterList(searchText: String)
-    func getCharacterForCell(index: Int) -> Character
-    func getNameForCell(index: Int) -> String
-    func getCharacterCount() -> Int
-    func getCharacterBy(name: String) -> Character
-}
-
 class SearchInteractor: SearchInteractorProtocol {
     private weak var presenter: SearchPresenterProtocol!
     
@@ -28,6 +20,10 @@ class SearchInteractor: SearchInteractorProtocol {
     }
     
     func searchCharacterList(searchText: String) {
+        if (searchText == "") {
+            self.cancelSearch()
+            self.presenter.showCharacters(charactersName: [])
+        }
         delayer.config(delayedFunc: self.downloadCharacterList(searchText:), data: searchText)
         delayer.call()
     }
@@ -54,5 +50,11 @@ class SearchInteractor: SearchInteractorProtocol {
     
     func getCharacterBy(name: String) -> Character {
         return self.characterService.findByName(name: name)
+    }
+    
+    private func cancelSearch() {
+        self.delayer.cancelTimerFire()
+        self.networkManager.cancelCurrentRequest()
+        self.characterService.setCharacters(newCharacters: nil)
     }
 }
