@@ -68,19 +68,12 @@
 		AA2682D423FBFFA700217B52 /* SearchModule */ = {
 			isa = PBXGroup;
 			children = (
+				AA2682DE23FC000E00217B52 /* SearchRouter.swift */,
 				AA2682D523FBFFBB00217B52 /* SearchConfigurator.swift */,
 				AA2682D723FBFFCB00217B52 /* SearchPresenter.swift */,
 				AA2682D923FBFFDF00217B52 /* SearchInteractor.swift */,
 			);
 			path = SearchModule;
-			sourceTree = "<group>";
-		};
-		AA2682DC23FBFFF600217B52 /* Routers */ = {
-			isa = PBXGroup;
-			children = (
-				AA2682DE23FC000E00217B52 /* SearchRouter.swift */,
-			);
-			path = Routers;
 			sourceTree = "<group>";
 		};
 		AA4996F623F53DDA00B2A3CF /* SearchTableViewCell */ = {
@@ -182,7 +175,6 @@
 		AAF2A3DD23F46CAC00990EF3 /* Practice2 */ = {
 			isa = PBXGroup;
 			children = (
-				AA2682DC23FBFFF600217B52 /* Routers */,
 				AA2682D423FBFFA700217B52 /* SearchModule */,
 				AA49971323F8985B00B2A3CF /* Resource */,
 				AA49971223F8983B00B2A3CF /* BaseAppDelegate */,
