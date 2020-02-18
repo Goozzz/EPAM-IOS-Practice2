@@ -17,6 +17,8 @@ protocol SearchPresenterProtocol: class {
     func showCharacters(charactersName: [String])
     func prepareSearchTableViewCell(index: Int) -> String
     func getCharacterCount() -> Int
+    func characterCellSelected(sender: Any?)
+    func prepareForShowDetailInfo(name: String, destination: DetailInfoViewController)
 }
 
 class SearchPresenter: SearchPresenterProtocol {
@@ -61,6 +63,16 @@ class SearchPresenter: SearchPresenterProtocol {
     
     func getCharacterCount() -> Int {
         return self.interactor.getCharacterCount()
+    }
+    
+    func characterCellSelected(sender: Any?) {
+        self.router.showDetailView(sender: sender)
+    }
+    
+    func prepareForShowDetailInfo(name: String, destination: DetailInfoViewController) {
+        let character = self.interactor.getCharacterBy(name: name)
+        destination.setChar(char: character)
+
     }
     
 }

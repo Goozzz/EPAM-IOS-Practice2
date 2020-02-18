@@ -35,6 +35,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        self.performSegue(withIdentifier: "showDetailCharInformation", sender: tableView.cellForRow(at: indexPath))
+        
+        self.presenter.characterCellSelected(sender: self.resultSearchTableView.cellForRow(at: indexPath))
     }
 }

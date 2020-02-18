@@ -13,7 +13,7 @@
 		AA2682DF23FC000E00217B52 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2682DE23FC000E00217B52 /* SearchRouter.swift */; };
 		AA4996FB23F53E4900B2A3CF /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4996F923F53E4900B2A3CF /* SearchTableViewCell.swift */; };
 		AA4996FC23F53E4900B2A3CF /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4996FA23F53E4900B2A3CF /* SearchTableViewCell.xib */; };
-		AA4996FE23F57B0900B2A3CF /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */; };
+		AA4996FE23F57B0900B2A3CF /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4996FD23F57B0900B2A3CF /* CharacterService.swift */; };
 		AA49970723F848A600B2A3CF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970623F848A600B2A3CF /* NetworkManager.swift */; };
 		AA49970B23F8681600B2A3CF /* SearchDelayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970A23F8681600B2A3CF /* SearchDelayer.swift */; };
 		AA49971123F87E7700B2A3CF /* DetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49971023F87E7700B2A3CF /* DetailInfoViewController.swift */; };
@@ -34,7 +34,7 @@
 		AA2682DE23FC000E00217B52 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		AA4996F923F53E4900B2A3CF /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		AA4996FA23F53E4900B2A3CF /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
-		AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		AA4996FD23F57B0900B2A3CF /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
 		AA49970623F848A600B2A3CF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AA49970A23F8681600B2A3CF /* SearchDelayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelayer.swift; sourceTree = "<group>"; };
 		AA49971023F87E7700B2A3CF /* DetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		AA49970823F8533D00B2A3CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */,
+				AA4996FD23F57B0900B2A3CF /* CharacterService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -258,7 +258,7 @@
 				AAF2A3E323F46CAC00990EF3 /* SearchViewController.swift in Sources */,
 				AA2682D623FBFFBB00217B52 /* SearchConfigurator.swift in Sources */,
 				AA49971523F89AD200B2A3CF /* ViewControllerTableExt.swift in Sources */,
-				AA4996FE23F57B0900B2A3CF /* CharacterModel.swift in Sources */,
+				AA4996FE23F57B0900B2A3CF /* CharacterService.swift in Sources */,
 				AA49970723F848A600B2A3CF /* NetworkManager.swift in Sources */,
 				AA2682D823FBFFCB00217B52 /* SearchPresenter.swift in Sources */,
 				AA4996FB23F53E4900B2A3CF /* SearchTableViewCell.swift in Sources */,

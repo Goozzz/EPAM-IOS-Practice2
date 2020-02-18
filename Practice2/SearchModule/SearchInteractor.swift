@@ -13,6 +13,7 @@ protocol SearchInteractorProtocol: class {
     func getCharacterForCell(index: Int) -> Character
     func getNameForCell(index: Int) -> String
     func getCharacterCount() -> Int
+    func getCharacterBy(name: String) -> Character
 }
 
 class SearchInteractor: SearchInteractorProtocol {
@@ -51,4 +52,7 @@ class SearchInteractor: SearchInteractorProtocol {
         return self.characterService.count
     }
     
+    func getCharacterBy(name: String) -> Character {
+        return self.characterService.findByName(name: name)
+    }
 }

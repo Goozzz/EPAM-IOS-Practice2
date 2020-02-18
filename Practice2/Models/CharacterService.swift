@@ -70,6 +70,7 @@ protocol CharacterServiceProtocol {
     func setCharacters(newCharacters: Data)
     func getCharacterAtIndex(index: Int) -> Character
     func getCharacterNameAtIndex(index: Int) -> String
+    func findByName(name: String) -> Character
 }
 
 class CharacterKeeper: CharacterServiceProtocol {

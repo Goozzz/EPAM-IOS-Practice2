@@ -37,8 +37,7 @@ class SearchViewController: UIViewController {
             if let cell = sender as? SearchTableViewCell,
                 let name = cell.myLabel?.text,
                 let destination = segue.destination as? DetailInfoViewController {
-                let char = characterKeeper.findByName(name: name)
-                destination.setChar(char: char)
+                self.presenter.prepareForShowDetailInfo(name: name, destination: destination)
             }
         }
     }
@@ -48,9 +47,15 @@ protocol SearchViewControllerProtocol: class {
     var presenter: SearchPresenterProtocol! {set get}
     
     func updateSearchTableView()
+    func peformSegue(segueIdentifier: String, sender: Any?)
 }
 
 extension SearchViewController: SearchViewControllerProtocol {
+    
+    func peformSegue(segueIdentifier: String, sender: Any?) {
+        self.performSegue(withIdentifier: segueIdentifier, sender: sender)
+    }
+    
     var presenter: SearchPresenterProtocol! {
         get {
             return _presenter
