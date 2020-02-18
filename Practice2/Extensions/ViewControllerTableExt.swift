@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characterKeeper.getCharacterlist().count
     }

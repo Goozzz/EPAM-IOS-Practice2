@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension ViewController: UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText:String) {
         if (searchText == "") {
             self.characterKeeper.setCharacterList(charList: [])

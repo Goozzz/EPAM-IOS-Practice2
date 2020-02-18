@@ -8,9 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SearchViewController: UIViewController {
     @IBOutlet weak var starWarsSearchBar: UISearchBar!
     @IBOutlet weak var resultSearchTableView: UITableView!
+    
+    private var _presenter: SearchPresenterProtocol!
+    private var _configurator: SearchConfiguratorProtocol = SearchConfigurator()
     
     var currentTask: URLSessionDataTask?
     let characterKeeper = CharacterKeeper()
@@ -18,6 +21,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        _configurator.config(viewController: self)
 
         starWarsSearchBar.delegate = self
         
@@ -40,16 +45,33 @@ class ViewController: UIViewController {
     }
 }
 
+protocol ViewControllerProtocol: class {
+    var presenter: SearchPresenterProtocol! {set get}
+}
+
 protocol DataUpdater: class {
     func updateSearchTableView(charList: [Character]);
 }
 
-extension ViewController: DataUpdater {
+extension SearchViewController: DataUpdater {
     func updateSearchTableView(charList: [Character]) {
         characterKeeper.setCharacterList(charList: charList)
         DispatchQueue.main.async {
             self.resultSearchTableView.reloadData()
         }
     }
+}
+
+extension SearchViewController: ViewControllerProtocol {
+    var presenter: SearchPresenterProtocol! {
+        get {
+            return _presenter
+        }
+        set {
+            self._presenter = newValue
+        }
+    }
+    
+    
 }
 
