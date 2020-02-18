@@ -50,19 +50,6 @@ protocol SearchViewControllerProtocol: class {
     func updateSearchTableView()
 }
 
-protocol DataUpdater: class {
-    func updateSearchTableView(charList: [Character]);
-}
-
-extension SearchViewController: DataUpdater {
-    func updateSearchTableView(charList: [Character]) {
-        characterKeeper.setCharacterList(charList: charList)
-        DispatchQueue.main.async {
-            self.resultSearchTableView.reloadData()
-        }
-    }
-}
-
 extension SearchViewController: SearchViewControllerProtocol {
     var presenter: SearchPresenterProtocol! {
         get {

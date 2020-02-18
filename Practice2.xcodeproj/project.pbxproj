@@ -14,10 +14,8 @@
 		AA4996FB23F53E4900B2A3CF /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4996F923F53E4900B2A3CF /* SearchTableViewCell.swift */; };
 		AA4996FC23F53E4900B2A3CF /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4996FA23F53E4900B2A3CF /* SearchTableViewCell.xib */; };
 		AA4996FE23F57B0900B2A3CF /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */; };
-		AA49970423F846AF00B2A3CF /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970323F846AF00B2A3CF /* SearchManager.swift */; };
 		AA49970723F848A600B2A3CF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970623F848A600B2A3CF /* NetworkManager.swift */; };
 		AA49970B23F8681600B2A3CF /* SearchDelayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970A23F8681600B2A3CF /* SearchDelayer.swift */; };
-		AA49970D23F86DD100B2A3CF /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49970C23F86DD100B2A3CF /* SearchRequest.swift */; };
 		AA49971123F87E7700B2A3CF /* DetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49971023F87E7700B2A3CF /* DetailInfoViewController.swift */; };
 		AA49971523F89AD200B2A3CF /* ViewControllerTableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49971423F89AD200B2A3CF /* ViewControllerTableExt.swift */; };
 		AA49971723F89AE100B2A3CF /* ViewControllerSearchExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49971623F89AE100B2A3CF /* ViewControllerSearchExt.swift */; };
@@ -37,10 +35,8 @@
 		AA4996F923F53E4900B2A3CF /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		AA4996FA23F53E4900B2A3CF /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		AA4996FD23F57B0900B2A3CF /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
-		AA49970323F846AF00B2A3CF /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		AA49970623F848A600B2A3CF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		AA49970A23F8681600B2A3CF /* SearchDelayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelayer.swift; sourceTree = "<group>"; };
-		AA49970C23F86DD100B2A3CF /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		AA49971023F87E7700B2A3CF /* DetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoViewController.swift; sourceTree = "<group>"; };
 		AA49971423F89AD200B2A3CF /* ViewControllerTableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTableExt.swift; sourceTree = "<group>"; };
 		AA49971623F89AE100B2A3CF /* ViewControllerSearchExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSearchExt.swift; sourceTree = "<group>"; };
@@ -88,9 +84,7 @@
 		AA49970223F8460C00B2A3CF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				AA49970323F846AF00B2A3CF /* SearchManager.swift */,
 				AA49970A23F8681600B2A3CF /* SearchDelayer.swift */,
-				AA49970C23F86DD100B2A3CF /* SearchRequest.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -263,7 +257,6 @@
 			files = (
 				AAF2A3E323F46CAC00990EF3 /* SearchViewController.swift in Sources */,
 				AA2682D623FBFFBB00217B52 /* SearchConfigurator.swift in Sources */,
-				AA49970423F846AF00B2A3CF /* SearchManager.swift in Sources */,
 				AA49971523F89AD200B2A3CF /* ViewControllerTableExt.swift in Sources */,
 				AA4996FE23F57B0900B2A3CF /* CharacterModel.swift in Sources */,
 				AA49970723F848A600B2A3CF /* NetworkManager.swift in Sources */,
@@ -273,7 +266,6 @@
 				AAF2A3DF23F46CAC00990EF3 /* AppDelegate.swift in Sources */,
 				AA2682DA23FBFFDF00217B52 /* SearchInteractor.swift in Sources */,
 				AA49970B23F8681600B2A3CF /* SearchDelayer.swift in Sources */,
-				AA49970D23F86DD100B2A3CF /* SearchRequest.swift in Sources */,
 				AA49971123F87E7700B2A3CF /* DetailInfoViewController.swift in Sources */,
 				AA49971723F89AE100B2A3CF /* ViewControllerSearchExt.swift in Sources */,
 				AAF2A3E123F46CAC00990EF3 /* SceneDelegate.swift in Sources */,

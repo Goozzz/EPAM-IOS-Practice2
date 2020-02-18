@@ -9,7 +9,6 @@
 import Foundation
 
 protocol NetworkServiceProtocol: class {
-    func downloadCharacterListFromAPI(request: SearchRequest)
     func cancelCurrentRequest()
     func getAllCharacters(searchText:String, completion: @escaping (Data) ->())
 }
@@ -64,29 +63,5 @@ class NetWorkManager: NetworkServiceProtocol {
         
         self.resumeCurrentRequest()
         
-    }
-    
-    func downloadCharacterListFromAPI(request: SearchRequest) {
-        guard let url = URL(string: "\(STAR_WARS_SEARCH_URL)\(request.searchText)") else {
-            return
-        }
-        
-        self.cancelCurrentRequest()
-        
-        self.currentTask = URLSession.shared.dataTask(with: url) { (data,
-        response, error) in
-            if error != nil {
-                return
-            }
-            
-            if let data = data, let charList = try?
-                    JSONDecoder().decode(CharacterList.self, from: data) {
-                    if(charList.charList.isEmpty) {
-                        return
-                    }
-                    request.dataUpdater.updateSearchTableView(charList: charList.charList)
-                }
-        }
-        self.resumeCurrentRequest()
     }
 }
