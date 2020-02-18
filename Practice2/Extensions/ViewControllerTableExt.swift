@@ -11,7 +11,7 @@ import UIKit
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characterKeeper.getCharacterlist().count
+        return self.presenter.getCharacterCount()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -26,7 +26,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "SearchTableViewCell", for: indexPath)
             as? SearchTableViewCell else { return UITableViewCell() }
-        cell.prepareForAppear(text: self.characterKeeper.getCharNameAtIndex(index: indexPath.row))
+        
+        let name = self.presenter.prepareSearchTableViewCell(index: indexPath.row)
+        cell.prepareForAppear(text: name)
+        
         return cell
     }
     

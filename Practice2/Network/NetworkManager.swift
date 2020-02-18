@@ -8,12 +8,13 @@
 
 import Foundation
 
-protocol NetworkDownloadProtocol: class {
+protocol NetworkServiceProtocol: class {
     func downloadCharacterListFromAPI(request: SearchRequest)
     func cancelCurrentRequest()
+    func getAllCharacters(searchText:String, completion: @escaping (Data) ->())
 }
 
-class NetWorkManager: NetworkDownloadProtocol {
+class NetWorkManager: NetworkServiceProtocol {
     
     private let STAR_WARS_SEARCH_URL = "https://swapi.co/api/people/?search="
     private let MAX_SEARCH_DELAY = 30.0
@@ -40,6 +41,29 @@ class NetWorkManager: NetworkDownloadProtocol {
     private func resumeCurrentRequest() {
         self.setTimer()
         self.currentTask?.resume()
+    }
+    
+    func getAllCharacters(searchText:String, completion: @escaping (Data) ->()) {
+        guard let url = URL(string: "\(STAR_WARS_SEARCH_URL)\(searchText)") else {
+            return
+        }
+        
+        self.cancelCurrentRequest()
+        
+        self.currentTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                return
+            }
+            
+            guard let downloadedData = data else {
+                return
+            }
+            
+            completion(downloadedData)
+        }
+        
+        self.resumeCurrentRequest()
+        
     }
     
     func downloadCharacterListFromAPI(request: SearchRequest) {

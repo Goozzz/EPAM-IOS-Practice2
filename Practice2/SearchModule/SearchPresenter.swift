@@ -14,6 +14,9 @@ protocol SearchPresenterProtocol: class {
     var router: SearchRouterProtocol! {set get}
     
     func getAllCharacters(searchText: String)
+    func showCharacters(charactersName: [String])
+    func prepareSearchTableViewCell(index: Int) -> String
+    func getCharacterCount() -> Int
 }
 
 class SearchPresenter: SearchPresenterProtocol {
@@ -45,11 +48,19 @@ class SearchPresenter: SearchPresenterProtocol {
     }
     
     func getAllCharacters(searchText: String) {
-        self.interactor.prepareCharacterList(searchText: searchText)
+        self.interactor.downloadCharacterList(searchText: searchText)
     }
     
-    func showCharacters() {
-        //self._viewController.updateSearchTableView(dataList: nameList)
+    func showCharacters(charactersName: [String]) {
+        self._viewController.updateSearchTableView()
+    }
+    
+    func prepareSearchTableViewCell(index: Int) -> String {
+        return self.interactor.getNameForCell(index: index)
+    }
+    
+    func getCharacterCount() -> Int {
+        return self.interactor.getCharacterCount()
     }
     
 }

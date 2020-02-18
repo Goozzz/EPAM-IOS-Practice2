@@ -18,7 +18,9 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         
-        let searchRequest = SearchRequest(searchText: searchText, updater: self)
-        self.searchManager?.searchCharacterList(request: searchRequest)
+//        let searchRequest = SearchRequest(searchText: searchText, updater: self)
+//        self.searchManager?.searchCharacterList(request: searchRequest)
+        
+        self.presenter.getAllCharacters(searchText: searchText)
     }
 }

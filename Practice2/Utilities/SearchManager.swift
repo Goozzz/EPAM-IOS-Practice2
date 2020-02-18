@@ -21,7 +21,7 @@ class SearchManager: SearchDataProtocol {
     
     init(request: SearchRequest) {
         self.networkManager = NetWorkManager()
-                self.delayer = SearchDelayer(delay: self.SEARCH_DELAY, delayedFunc: networkManager.downloadCharacterListFromAPI(request:), request: request)
+        self.delayer = SearchDelayer(delay: self.SEARCH_DELAY, delayedFunc: networkManager.downloadCharacterListFromAPI(request:), request: request)
     }
     
     func searchCharacterList(request: SearchRequest) {

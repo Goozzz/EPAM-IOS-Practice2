@@ -50,7 +50,7 @@ class SearchViewController: UIViewController {
 protocol SearchViewControllerProtocol: class {
     var presenter: SearchPresenterProtocol! {set get}
     
-    func updateSearchTableView(dataList: [String])
+    func updateSearchTableView()
 }
 
 protocol DataUpdater: class {
@@ -76,11 +76,10 @@ extension SearchViewController: SearchViewControllerProtocol {
         }
     }
     
-    func updateSearchTableView(dataList: [String]) {
-            
+    func updateSearchTableView() {
+        DispatchQueue.main.async {
+            self.resultSearchTableView.reloadData()
+        }
     }
-    
-    
-    
 }
 

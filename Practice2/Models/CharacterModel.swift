@@ -63,12 +63,23 @@ struct CharacterList: Codable {
     
 }
 
-protocol CharacterPickerProtocol {
-    func getAllCharactersName() -> [String]
+protocol CharacterServiceProtocol {
+    var count: Int {get}
+    
+    func getAllCharacterName() -> [String]
+    func setCharacters(newCharacters: Data)
+    func getCharacterAtIndex(index: Int) -> Character
+    func getCharacterNameAtIndex(index: Int) -> String
 }
 
-class CharacterKeeper: CharacterPickerProtocol {
+class CharacterKeeper: CharacterServiceProtocol {
     private var characterList: [Character]?
+    
+    var count: Int {
+        get {
+            return self.characterList?.count ?? 0
+        }
+    }
     
     func setCharacterList(charList: [Character]) {
         self.characterList = charList
@@ -95,7 +106,7 @@ class CharacterKeeper: CharacterPickerProtocol {
         return Character()
     }
     
-    func getAllCharactersName() -> [String] {
+    func getAllCharacterName() -> [String] {
         guard let list = self.characterList else {
             return []
         }
@@ -106,6 +117,25 @@ class CharacterKeeper: CharacterPickerProtocol {
         }
         
         return charactaresName
+    }
+    
+    func setCharacters(newCharacters: Data) {
+        if let charList = try?
+            JSONDecoder().decode(CharacterList.self, from: newCharacters) {
+            if(charList.charList.isEmpty) {
+                self.characterList = []
+            } else {
+                self.characterList = charList.charList
+            }
+        }
+    }
+    
+    func getCharacterAtIndex(index: Int) -> Character {
+        return self.characterList?[index] ?? Character()
+    }
+    
+    func getCharacterNameAtIndex(index: Int) -> String {
+        return self.characterList?[index].name ?? ""
     }
 }
 
