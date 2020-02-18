@@ -12,17 +12,18 @@ class SearchInteractor: SearchInteractorProtocol {
     private weak var presenter: SearchPresenterProtocol!
     
     private let networkManager: NetworkServiceProtocol = NetWorkManager()
-    private let characterService: CharacterServiceProtocol = CharacterKeeper()
+    private let characterService: HeroServiceProtocol = HeroKeeper()
     private var delayer: SearchDelayerProtocol = SearchDelayer()
     
     init(presenter: SearchPresenterProtocol) {
         self.presenter = presenter
     }
     
-    func searchCharacterList(searchText: String) {
+    func searchHeroesList(searchText: String) {
         if (searchText == "") {
             self.cancelSearch()
-            self.presenter.showCharacters(charactersName: [])
+            self.presenter.showHeroes(heroesNames: [])
+            return
         }
         delayer.config(delayedFunc: self.downloadCharacterList(searchText:), data: searchText)
         delayer.call()
@@ -30,31 +31,31 @@ class SearchInteractor: SearchInteractorProtocol {
     
     private func downloadCharacterList(searchText: String) {
         self.networkManager.getAllCharacters(searchText: searchText) { (data) in
-            self.characterService.setCharacters(newCharacters: data)
-            let listName = self.characterService.getAllCharacterName()
-            self.presenter.showCharacters(charactersName: listName)
+            self.characterService.setHeroes(newHeroes: data)
+            let listName = self.characterService.getAllHeroName()
+            self.presenter.showHeroes(heroesNames: listName)
         }
     }
     
-    func getCharacterForCell(index: Int) -> Character {
-        return self.characterService.getCharacterAtIndex(index: index)
+    func getHeroForCell(index: Int) -> Hero {
+        return self.characterService.getHeroAtIndex(index: index)
     }
     
-    func getNameForCell(index: Int) -> String {
-        return self.characterService.getCharacterNameAtIndex(index: index)
+    func getHeroNameForCell(index: Int) -> String {
+        return self.characterService.getHeroNameAtIndex(index: index)
     }
     
-    func getCharacterCount() -> Int {
+    func getHeroesCount() -> Int {
         return self.characterService.count
     }
     
-    func getCharacterBy(name: String) -> Character {
-        return self.characterService.findByName(name: name)
+    func getHeroByName(name: String) -> Hero {
+        return self.characterService.getHeroByName(name: name)
     }
     
     private func cancelSearch() {
         self.delayer.cancelTimerFire()
         self.networkManager.cancelCurrentRequest()
-        self.characterService.setCharacters(newCharacters: nil)
+        self.characterService.setHeroes(newHeroes: nil)
     }
 }

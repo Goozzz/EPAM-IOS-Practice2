@@ -19,28 +19,28 @@ class SearchPresenter: SearchPresenterProtocol {
         self.viewController = viewController
     }
     
-    func getAllCharacters(searchText: String) {
-        self.interactor.searchCharacterList(searchText: searchText)
+    func getAllHeroes(searchText: String) {
+        self.interactor.searchHeroesList(searchText: searchText)
     }
     
-    func showCharacters(charactersName: [String]) {
+    func showHeroes(heroesNames: [String]) {
         self.viewController.updateSearchTableView()
     }
     
     func prepareSearchTableViewCell(index: Int) -> String {
-        return self.interactor.getNameForCell(index: index)
+        return self.interactor.getHeroNameForCell(index: index)
     }
     
-    func getCharacterCount() -> Int {
-        return self.interactor.getCharacterCount()
+    func getHeroesCount() -> Int {
+        return self.interactor.getHeroesCount()
     }
     
-    func characterCellSelected(sender: Any?) {
+    func heroCellSelected(sender: Any?) {
         self.router.showDetailView(sender: sender)
     }
     
     func prepareForShowDetailInfo(name: String, destination: DetailInfoViewController) {
-        let character = self.interactor.getCharacterBy(name: name)
+        let character = self.interactor.getHeroByName(name: name)
         destination.setChar(char: character)
     }
 }

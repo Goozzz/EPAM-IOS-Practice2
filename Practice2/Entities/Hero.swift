@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Character: Codable {
+struct Hero: Codable {
     let name: String
     let height: String
     let mass: String
@@ -41,10 +41,10 @@ struct Character: Codable {
     }
 }
 
-struct CharacterList: Codable {
-    let charList: [Character]
+struct HeroList: Codable {
+    let list: [Hero]
     
     enum CodingKeys: String, CodingKey {
-        case charList = "results"
+        case list = "results"
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.presenter.getCharacterCount()
+        return self.presenter.getHeroesCount()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -34,6 +34,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        self.presenter.characterCellSelected(sender: self.resultSearchTableView.cellForRow(at: indexPath))
+        self.presenter.heroCellSelected(sender: self.resultSearchTableView.cellForRow(at: indexPath))
     }
 }

@@ -20,7 +20,7 @@ class DetailInfoViewController: UIViewController {
     @IBOutlet private weak var birthYearLabel: UILabel!
     @IBOutlet private weak var genderLabel: UILabel!
     
-    private var charWithInfo: Character?
+    private var charWithInfo: Hero?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class DetailInfoViewController: UIViewController {
         genderLabel.text = self.charWithInfo?.gender
     }
     
-    func setChar(char: Character) {
+    func setChar(char: Hero) {
         self.charWithInfo = char
     }
 }
