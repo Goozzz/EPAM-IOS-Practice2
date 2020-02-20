@@ -41,6 +41,6 @@ class SearchPresenter: SearchPresenterProtocol {
     
     func prepareForShowDetailInfo(name: String, destination: DetailInfoViewController) {
         let character = self.interactor.getHeroByName(name: name)
-        destination.setChar(char: character)
+        destination.setHero(hero: character)
     }
 }

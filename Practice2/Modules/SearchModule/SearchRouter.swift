@@ -19,6 +19,7 @@ class SearchRouter: SearchRouterProtocol {
     }
     
     func showDetailView(sender: Any?) {
-        self.viewController.peformSegue(segueIdentifier: self.DETAIL_SEGUE_IDENTIFIER, sender: sender)
+        self.viewController.peformSegue(segueIdentifier: self.DETAIL_SEGUE_IDENTIFIER,
+                                        sender: sender)
     }    
 }

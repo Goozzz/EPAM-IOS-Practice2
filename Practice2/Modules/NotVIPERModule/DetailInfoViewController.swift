@@ -11,6 +11,8 @@ import UIKit
 
 class DetailInfoViewController: UIViewController {
     
+    private var hero: Hero?
+    
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var heightLabel: UILabel!
     @IBOutlet private weak var massLabel: UILabel!
@@ -20,25 +22,23 @@ class DetailInfoViewController: UIViewController {
     @IBOutlet private weak var birthYearLabel: UILabel!
     @IBOutlet private weak var genderLabel: UILabel!
     
-    private var charWithInfo: Hero?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateInfoLabel()
     }
     
     private func updateInfoLabel() {
-        nameLabel.text = self.charWithInfo?.name
-        heightLabel.text = self.charWithInfo?.height
-        massLabel.text = self.charWithInfo?.mass
-        hairColorLabel.text = self.charWithInfo?.hairColor
-        skinColorLabel.text = self.charWithInfo?.skinColor
-        eyeColorLabel.text = self.charWithInfo?.eyeColor
-        birthYearLabel.text = self.charWithInfo?.birthYear
-        genderLabel.text = self.charWithInfo?.gender
+        nameLabel.text = hero?.name
+        heightLabel.text = hero?.height
+        massLabel.text = hero?.mass
+        hairColorLabel.text = hero?.hairColor
+        skinColorLabel.text = hero?.skinColor
+        eyeColorLabel.text = hero?.eyeColor
+        birthYearLabel.text = hero?.birthYear
+        genderLabel.text = hero?.gender
     }
     
-    func setChar(char: Hero) {
-        self.charWithInfo = char
+    func setHero(hero: Hero) {
+        self.hero = hero
     }
 }
