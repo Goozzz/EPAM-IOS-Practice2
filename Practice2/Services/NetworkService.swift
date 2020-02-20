@@ -22,24 +22,28 @@ class NetWorkManager: NetworkServiceProtocol {
     private weak var currentTaskTimer: Timer?
     
     private func setTask(task: URLSessionDataTask) {
-        self.currentTask = task
+        currentTask = task
     }
     
     private func setTimer() {
-        self.currentTaskTimer?.invalidate()
-        self.currentTaskTimer = nil
-        self.currentTaskTimer = Timer.scheduledTimer(timeInterval: self.MAX_SEARCH_DELAY, target: self, selector: #selector(self.cancelCurrentRequest), userInfo: nil, repeats: false)
+        currentTaskTimer?.invalidate()
+        currentTaskTimer = nil
+        currentTaskTimer = Timer.scheduledTimer(timeInterval: MAX_SEARCH_DELAY,
+                                                target: self,
+                                                selector: #selector(cancelCurrentRequest),
+                                                userInfo: nil,
+                                                repeats: false)
     }
     
     @objc func cancelCurrentRequest() {
-        self.currentTaskTimer?.invalidate()
-        self.currentTaskTimer = nil
-        self.currentTask?.cancel()
+        currentTaskTimer?.invalidate()
+        currentTaskTimer = nil
+        currentTask?.cancel()
     }
     
     private func resumeCurrentRequest() {
-        self.setTimer()
-        self.currentTask?.resume()
+        setTimer()
+        currentTask?.resume()
     }
     
     func getAllCharacters(searchText:String, completion: @escaping (Data) ->()) {
@@ -47,9 +51,9 @@ class NetWorkManager: NetworkServiceProtocol {
             return
         }
         
-        self.cancelCurrentRequest()
+        cancelCurrentRequest()
         
-        self.currentTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        currentTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 return
             }
@@ -61,6 +65,6 @@ class NetWorkManager: NetworkServiceProtocol {
             completion(downloadedData)
         }
 
-        self.resumeCurrentRequest()
+        resumeCurrentRequest()
     }
 }

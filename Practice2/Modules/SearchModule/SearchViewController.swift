@@ -28,8 +28,8 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
         resultSearchTableView.dataSource = self
     }
     
-    func peformSegue(segueIdentifier: String, sender: Any?) {
-        self.performSegue(withIdentifier: segueIdentifier, sender: sender)
+    func performSegue(segueIdentifier: String, sender: Any?) {
+        performSegue(withIdentifier: segueIdentifier, sender: sender)
     }
     
     func updateSearchTableView() {
@@ -43,7 +43,7 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
             if let cell = sender as? SearchTableViewCell,
                 let name = cell.myLabel?.text,
                 let destination = segue.destination as? DetailInfoViewController {
-                self.presenter.prepareForShowDetailInfo(name: name, destination: destination)
+                presenter.prepareForShowDetailInfo(name: name, destination: destination)
             }
         }
     }

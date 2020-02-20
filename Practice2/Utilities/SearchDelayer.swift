@@ -22,24 +22,28 @@ class SearchDelayer: SearchDelayerProtocol {
     private var data = ""
     
     func call() {
-        self.timer?.invalidate()
-        self.timer = nil
-        let nextTimer = Timer.scheduledTimer(timeInterval: self.START_SEARCH_DELAY, target: self, selector: #selector(SearchDelayer.fireNow), userInfo: nil, repeats: false)
-        self.timer = nextTimer
+        timer?.invalidate()
+        timer = nil
+        let nextTimer = Timer.scheduledTimer(timeInterval: self.START_SEARCH_DELAY,
+                                             target: self,
+                                             selector: #selector(SearchDelayer.fireNow),
+                                             userInfo: nil,
+                                             repeats: false)
+        timer = nextTimer
     }
     
     @objc private func fireNow() {
-        self.delayedFunc?(self.data)
+        delayedFunc?(self.data)
     }
     
     func cancelTimerFire() {
-        self.timer?.invalidate()
-        self.timer = nil
+        timer?.invalidate()
+        timer = nil
     }
     
     func config(delayedFunc: @escaping (String) -> (), data: String) {
-        self.timer?.invalidate()
-        self.timer = nil
+        timer?.invalidate()
+        timer = nil
         self.data = data
         self.delayedFunc = delayedFunc
     }

@@ -30,14 +30,14 @@ struct Hero: Codable {
     }
     
     init() {
-        self.name = ""
-        self.height = ""
-        self.mass = ""
-        self.hairColor = ""
-        self.skinColor = ""
-        self.eyeColor = ""
-        self.birthYear = ""
-        self.gender = ""
+        name = ""
+        height = ""
+        mass = ""
+        hairColor = ""
+        skinColor = ""
+        eyeColor = ""
+        birthYear = ""
+        gender = ""
     }
 }
 

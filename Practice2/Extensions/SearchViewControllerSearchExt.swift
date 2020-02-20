@@ -11,6 +11,6 @@ import UIKit
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText:String) {
-        self.presenter.getAllHeroes(searchText: searchText)
+        presenter.getAllHeroes(searchText: searchText)
     }
 }

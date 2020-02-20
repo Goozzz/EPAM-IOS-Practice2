@@ -21,16 +21,16 @@ class SearchInteractor: SearchInteractorProtocol {
     
     func searchHeroesList(searchText: String) {
         if (searchText == "") {
-            self.cancelSearch()
-            self.presenter.showHeroes(heroesNames: [])
+            cancelSearch()
+            presenter.showHeroes(heroesNames: [])
             return
         }
-        delayer.config(delayedFunc: self.downloadCharacterList(searchText:), data: searchText)
+        delayer.config(delayedFunc: downloadCharacterList(searchText:), data: searchText)
         delayer.call()
     }
     
     private func downloadCharacterList(searchText: String) {
-        self.networkManager.getAllCharacters(searchText: searchText) { (data) in
+        networkManager.getAllCharacters(searchText: searchText) { (data) in
             self.characterService.setHeroes(newHeroes: data)
             let listName = self.characterService.getAllHeroName()
             self.presenter.showHeroes(heroesNames: listName)
@@ -38,24 +38,24 @@ class SearchInteractor: SearchInteractorProtocol {
     }
     
     func getHeroForCell(index: Int) -> Hero {
-        return self.characterService.getHeroAtIndex(index: index)
+        return characterService.getHeroAtIndex(index: index)
     }
     
     func getHeroNameForCell(index: Int) -> String {
-        return self.characterService.getHeroNameAtIndex(index: index)
+        return characterService.getHeroNameAtIndex(index: index)
     }
     
     func getHeroesCount() -> Int {
-        return self.characterService.count
+        return characterService.count
     }
     
     func getHeroByName(name: String) -> Hero {
-        return self.characterService.getHeroByName(name: name)
+        return characterService.getHeroByName(name: name)
     }
     
     private func cancelSearch() {
-        self.delayer.cancelTimerFire()
-        self.networkManager.cancelCurrentRequest()
-        self.characterService.setHeroes(newHeroes: nil)
+        delayer.cancelTimerFire()
+        networkManager.cancelCurrentRequest()
+        characterService.setHeroes(newHeroes: nil)
     }
 }

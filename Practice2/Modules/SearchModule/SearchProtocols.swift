@@ -40,5 +40,5 @@ protocol SearchViewControllerProtocol: class {
     var presenter: SearchPresenterProtocol! {set get}
     
     func updateSearchTableView()
-    func peformSegue(segueIdentifier: String, sender: Any?)
+    func performSegue(segueIdentifier: String, sender: Any?)
 }

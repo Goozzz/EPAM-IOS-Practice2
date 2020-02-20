@@ -23,12 +23,12 @@ class HeroKeeper: HeroServiceProtocol {
     
     var count: Int {
         get {
-            return self.heroList?.count ?? 0
+            return heroList?.count ?? 0
         }
     }
     
     func getHeroByName(name: String) -> Hero {
-        guard let list = self.heroList else {
+        guard let list = heroList else {
             return Hero()
         }
         for hero in list {
@@ -41,7 +41,7 @@ class HeroKeeper: HeroServiceProtocol {
     }
     
     func getAllHeroName() -> [String] {
-        guard let list = self.heroList else {
+        guard let list = heroList else {
             return []
         }
         var heroesName: [String] = []
@@ -55,7 +55,7 @@ class HeroKeeper: HeroServiceProtocol {
     
     func setHeroes(newHeroes: Data?) {
         guard let data = newHeroes else {
-            self.heroList = []
+            heroList = []
             return
         }
         
@@ -70,11 +70,11 @@ class HeroKeeper: HeroServiceProtocol {
     }
     
     func getHeroAtIndex(index: Int) -> Hero {
-        return self.heroList?[index] ?? Hero()
+        return heroList?[index] ?? Hero()
     }
     
     func getHeroNameAtIndex(index: Int) -> String {
-        return self.heroList?[index].name ?? ""
+        return heroList?[index].name ?? ""
     }
 }
 
