@@ -30,10 +30,9 @@ protocol SearchPresenterProtocol: class {
 
 protocol SearchInteractorProtocol: class {
     func searchHeroesList(searchText: String)
-    func getHeroForCell(index: Int) -> Hero
     func getHeroNameForCell(index: Int) -> String
     func getHeroesCount() -> Int
-    func getHeroByName(name: String) -> Hero
+    func getHeroByName(name: String) -> Hero?
 }
 
 protocol SearchViewControllerProtocol: class {

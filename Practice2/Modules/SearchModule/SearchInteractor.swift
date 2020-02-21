@@ -37,10 +37,6 @@ class SearchInteractor: SearchInteractorProtocol {
         }
     }
     
-    func getHeroForCell(index: Int) -> Hero {
-        return characterService.getHeroAtIndex(index: index)
-    }
-    
     func getHeroNameForCell(index: Int) -> String {
         return characterService.getHeroNameAtIndex(index: index)
     }
@@ -49,7 +45,7 @@ class SearchInteractor: SearchInteractorProtocol {
         return characterService.count
     }
     
-    func getHeroByName(name: String) -> Hero {
+    func getHeroByName(name: String) -> Hero? {
         return characterService.getHeroByName(name: name)
     }
     

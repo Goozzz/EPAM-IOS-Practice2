@@ -13,9 +13,9 @@ protocol HeroServiceProtocol {
     
     func getAllHeroName() -> [String]
     func setHeroes(newHeroes: Data?)
-    func getHeroAtIndex(index: Int) -> Hero
+    func getHeroAtIndex(index: Int) -> Hero?
     func getHeroNameAtIndex(index: Int) -> String
-    func getHeroByName(name: String) -> Hero
+    func getHeroByName(name: String) -> Hero?
 }
 
 class HeroKeeper: HeroServiceProtocol {
@@ -27,9 +27,9 @@ class HeroKeeper: HeroServiceProtocol {
         }
     }
     
-    func getHeroByName(name: String) -> Hero {
+    func getHeroByName(name: String) -> Hero? {
         guard let list = heroList else {
-            return Hero()
+            return nil
         }
         for hero in list {
             if hero.name == name {
@@ -37,7 +37,7 @@ class HeroKeeper: HeroServiceProtocol {
             }
         }
         
-        return Hero()
+        return nil
     }
     
     func getAllHeroName() -> [String] {
@@ -69,8 +69,8 @@ class HeroKeeper: HeroServiceProtocol {
         }
     }
     
-    func getHeroAtIndex(index: Int) -> Hero {
-        return heroList?[index] ?? Hero()
+    func getHeroAtIndex(index: Int) -> Hero? {
+        return heroList?[index] ?? nil
     }
     
     func getHeroNameAtIndex(index: Int) -> String {

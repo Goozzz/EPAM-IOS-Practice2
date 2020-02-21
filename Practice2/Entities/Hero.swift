@@ -9,14 +9,14 @@
 import Foundation
 
 struct Hero: Codable {
-    let name: String
-    let height: String
-    let mass: String
-    let hairColor: String
-    let skinColor: String
-    let eyeColor: String
-    let birthYear: String
-    let gender: String
+    var name: String
+    var height: String
+    var mass: String
+    var hairColor: String
+    var skinColor: String
+    var eyeColor: String
+    var birthYear: String
+    var gender: String
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -28,21 +28,10 @@ struct Hero: Codable {
         case birthYear = "birth_year"
         case gender = "gender"
     }
-    
-    init() {
-        name = ""
-        height = ""
-        mass = ""
-        hairColor = ""
-        skinColor = ""
-        eyeColor = ""
-        birthYear = ""
-        gender = ""
-    }
 }
 
 struct HeroList: Codable {
-    let list: [Hero]
+    var list: [Hero]
     
     enum CodingKeys: String, CodingKey {
         case list = "results"

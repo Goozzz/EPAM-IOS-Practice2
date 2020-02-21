@@ -11,7 +11,7 @@ import UIKit
 
 class DetailInfoViewController: UIViewController {
     
-    private var hero: Hero = Hero()
+    private var hero: Hero?
     
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var heightLabel: UILabel!
@@ -28,6 +28,10 @@ class DetailInfoViewController: UIViewController {
     }
     
     private func updateInfoLabel() {
+        guard let hero = self.hero else {
+            return
+        }
+       
         nameLabel.text = hero.name
         heightLabel.text = hero.height
         massLabel.text = hero.mass
@@ -38,7 +42,7 @@ class DetailInfoViewController: UIViewController {
         genderLabel.text = hero.gender
     }
     
-    func setHero(hero: Hero) {
+    func setHero(hero: Hero?) {
         self.hero = hero
     }
 }
