@@ -31,26 +31,16 @@ class HeroKeeper: HeroServiceProtocol {
         guard let list = heroList else {
             return nil
         }
-        for hero in list {
-            if hero.name == name {
-                return hero
-            }
-        }
-        
-        return nil
+    
+        return list.first { $0.name == name }
     }
     
     func getAllHeroName() -> [String] {
         guard let list = heroList else {
             return []
         }
-        var heroesName: [String] = []
-        
-        for hero in list {
-            heroesName.append(hero.name)
-        }
-        
-        return heroesName
+
+        return list.map { $0.name }
     }
     
     func setHeroes(newHeroes: Data?) {
