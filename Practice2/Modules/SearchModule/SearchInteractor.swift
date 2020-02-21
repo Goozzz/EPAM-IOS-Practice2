@@ -20,7 +20,7 @@ class SearchInteractor: SearchInteractorProtocol {
     }
     
     func searchHeroesList(searchText: String) {
-        if (searchText == "") {
+        if (searchText.isEmpty) {
             cancelSearch()
             presenter.showHeroes(heroesNames: [])
             return
