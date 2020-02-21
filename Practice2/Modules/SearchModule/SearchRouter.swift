@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SearchRouter: SearchRouterProtocol {
-    private let DETAIL_SEGUE_IDENTIFIER = "showDetailCharInformation"
+    private let detailSegueIdentifier = "showDetailCharInformation"
     
     private weak var viewController: SearchViewControllerProtocol!
     
@@ -19,6 +19,6 @@ class SearchRouter: SearchRouterProtocol {
     }
     
     func showDetailView(sender: Any?) {
-        viewController.performSegue(segueIdentifier: DETAIL_SEGUE_IDENTIFIER, sender: sender)
+        viewController.performSegue(segueIdentifier: detailSegueIdentifier, sender: sender)
     }    
 }

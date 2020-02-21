@@ -15,7 +15,7 @@ protocol SearchDelayerProtocol: class {
 }
 
 class SearchDelayer: SearchDelayerProtocol {
-    private let START_SEARCH_DELAY = 0.75
+    private let startSearchDelay = 0.75
     private weak var timer: Timer?
     private var delayedFunc: ((String) -> ())?
     
@@ -24,7 +24,7 @@ class SearchDelayer: SearchDelayerProtocol {
     func call() {
         timer?.invalidate()
         timer = nil
-        let nextTimer = Timer.scheduledTimer(timeInterval: self.START_SEARCH_DELAY,
+        let nextTimer = Timer.scheduledTimer(timeInterval: self.startSearchDelay,
                                              target: self,
                                              selector: #selector(SearchDelayer.fireNow),
                                              userInfo: nil,

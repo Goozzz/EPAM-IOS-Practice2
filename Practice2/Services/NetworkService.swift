@@ -15,8 +15,8 @@ protocol NetworkServiceProtocol: class {
 
 class NetWorkManager: NetworkServiceProtocol {
     
-    private let STAR_WARS_SEARCH_URL = "https://swapi.co/api/people/?search="
-    private let MAX_SEARCH_DELAY = 30.0
+    private let starWarsSearchUrl = "https://swapi.co/api/people/?search="
+    private let maxSearchDelay = 30.0
     
     private weak var currentTask: URLSessionDataTask?
     private weak var currentTaskTimer: Timer?
@@ -28,7 +28,7 @@ class NetWorkManager: NetworkServiceProtocol {
     private func setTimer() {
         currentTaskTimer?.invalidate()
         currentTaskTimer = nil
-        currentTaskTimer = Timer.scheduledTimer(timeInterval: MAX_SEARCH_DELAY,
+        currentTaskTimer = Timer.scheduledTimer(timeInterval: maxSearchDelay,
                                                 target: self,
                                                 selector: #selector(cancelCurrentRequest),
                                                 userInfo: nil,
@@ -47,7 +47,7 @@ class NetWorkManager: NetworkServiceProtocol {
     }
     
     func getAllCharacters(searchText:String, completion: @escaping (Data) ->()) {
-        guard let url = URL(string: "\(STAR_WARS_SEARCH_URL)\(searchText)") else {
+        guard let url = URL(string: "\(starWarsSearchUrl)\(searchText)") else {
             return
         }
         
