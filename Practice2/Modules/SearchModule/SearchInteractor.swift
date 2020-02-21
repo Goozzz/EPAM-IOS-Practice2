@@ -30,10 +30,13 @@ class SearchInteractor: SearchInteractorProtocol {
     }
     
     private func downloadCharacterList(searchText: String) {
-        networkManager.getAllCharacters(searchText: searchText) { (data) in
-            self.characterService.setHeroes(newHeroes: data)
-            let listName = self.characterService.getAllHeroName()
-            self.presenter.showHeroes(heroesNames: listName)
+        networkManager.getAllCharacters(searchText: searchText) { [weak self] (data) in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.characterService.setHeroes(newHeroes: data)
+            let listName = strongSelf.characterService.getAllHeroName()
+            strongSelf.presenter.showHeroes(heroesNames: listName)
         }
     }
     
