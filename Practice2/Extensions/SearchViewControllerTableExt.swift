@@ -10,16 +10,30 @@ import Foundation
 import UIKit
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if (presenter.isEnableSearchMode()) {
+            return .none
+        } else {
+            return .delete
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            presenter.deleteRequest(index: indexPath.row)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.getHeroesCount()
+        if (presenter.isEnableSearchMode()) {
+            return presenter.getHeroesCount()
+        } else {
+            return presenter.getRequestsCount()
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(section == 0) {
-            return "Search"
-        }
-        
-        return nil
+        return presenter.getHeaderForSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,6 +48,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        presenter.heroCellSelected(sender: resultSearchTableView.cellForRow(at: indexPath))
+        if (presenter.isEnableSearchMode()) {
+            presenter.heroCellSelected(sender: resultSearchTableView.cellForRow(at: indexPath))
+        }
+        
     }
 }

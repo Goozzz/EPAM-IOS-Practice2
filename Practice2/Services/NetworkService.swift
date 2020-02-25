@@ -11,12 +11,17 @@ import Foundation
 protocol NetworkServiceProtocol: class {
     func cancelCurrentRequest()
     func getAllCharacters(searchText:String, completion: @escaping (Data) ->())
+    func getPreviousRequestsCount() -> Int
+    func getPreviousRequestsAtIndex(index: Int) -> String
+    func deleteRequest(index: Int)
 }
 
 class NetWorkManager: NetworkServiceProtocol {
     
     private let starWarsSearchUrl = "https://swapi.co/api/people/?search="
     private let maxSearchDelay = 30.0
+    
+    private var previousRequests = UserDefaults.standard.stringArray(forKey: "previousRequests") ?? []
     
     private weak var currentTask: URLSessionDataTask?
     private weak var currentTaskTimer: Timer?
@@ -33,6 +38,26 @@ class NetWorkManager: NetworkServiceProtocol {
                                                 selector: #selector(cancelCurrentRequest),
                                                 userInfo: nil,
                                                 repeats: false)
+    }
+    
+    private func appendNewRequest(request: String) {
+        if (!previousRequests.contains(request)) {
+            previousRequests.append(request)
+            UserDefaults.standard.set(previousRequests, forKey: "previousRequests")
+        }
+    }
+    
+    func getPreviousRequestsCount() -> Int {
+        return previousRequests.count
+    }
+    
+    func getPreviousRequestsAtIndex(index: Int) -> String {
+        return previousRequests[index]
+    }
+    
+    func deleteRequest(index: Int) {
+        previousRequests.remove(at: index)
+        UserDefaults.standard.set(previousRequests, forKey: "previousRequests")
     }
     
     @objc func cancelCurrentRequest() {
@@ -64,7 +89,8 @@ class NetWorkManager: NetworkServiceProtocol {
             
             completion(downloadedData)
         }
-
+        
+        appendNewRequest(request: searchText)
         resumeCurrentRequest()
     }
 }
