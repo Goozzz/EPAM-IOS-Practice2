@@ -15,23 +15,18 @@ class SearchPresenter: SearchPresenterProtocol {
     var interactor: SearchInteractorProtocol!
     var router: SearchRouterProtocol!
     
+    private var isEnableSearch = false
+    
     init(viewController: SearchViewControllerProtocol) {
         self.viewController = viewController
     }
     
     func isEnableSearchMode() -> Bool {
-        let heroCount = interactor.getHeroesCount()
-        
-        if (heroCount > 0) {
-            return true
-        } else {
-            return false
-        }
+        return isEnableSearch
     }
     
     func getHeaderForSection() -> String {
-        let heroCount = interactor.getHeroesCount()
-        if (heroCount > 0) {
+        if (isEnableSearchMode()) {
             return "Search"
         } else {
             return "Recently"
@@ -39,6 +34,13 @@ class SearchPresenter: SearchPresenterProtocol {
     }
     
     func getAllHeroes(searchText: String) {
+        if (searchText.isEmpty) {
+            isEnableSearch = false
+            viewController.updateSearchTableView()
+        } else {
+            isEnableSearch = true
+        }
+        
         interactor.searchHeroesList(searchText: searchText)
     }
     
