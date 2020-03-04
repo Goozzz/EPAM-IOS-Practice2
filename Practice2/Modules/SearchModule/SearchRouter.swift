@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class SearchRouter: SearchRouterProtocol {
+    
     private let detailSegueIdentifier = "showDetailCharInformation"
     
     private weak var viewController: SearchViewControllerProtocol!

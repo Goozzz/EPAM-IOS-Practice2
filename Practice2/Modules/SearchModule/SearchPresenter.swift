@@ -19,16 +19,6 @@ class SearchPresenter: SearchPresenterProtocol {
         self.viewController = viewController
     }
     
-    func isEnableSearchMode() -> Bool {
-        let heroCount = interactor.getHeroesCount()
-        
-        if (heroCount > 0) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
     func getHeaderForSection() -> String {
         let heroCount = interactor.getHeroesCount()
         if (heroCount > 0) {
@@ -46,12 +36,12 @@ class SearchPresenter: SearchPresenterProtocol {
         viewController.updateSearchTableView()
     }
     
-    func prepareSearchTableViewCell(index: Int) -> String {
-        if (isEnableSearchMode()) {
-            return interactor.getHeroNameForCell(index: index)
-        } else {
-            return interactor.getRequestForCell(index: index)
-        }
+    func getHeroNameForCell(index: Int) -> String {
+        return interactor.getHeroNameForCell(index: index)
+    }
+    
+    func getRequestForCell(index: Int) -> String {
+        return interactor.getRequestForCell(index: index)
     }
     
     func getHeroesCount() -> Int {
@@ -72,7 +62,11 @@ class SearchPresenter: SearchPresenterProtocol {
     }
     
     func prepareForShowDetailInfo(name: String, destination: DetailInfoViewController) {
-        let character = interactor.getHeroByName(name: name)
-        destination.setHero(hero: character)
+        guard let hero = interactor.getHeroByName(name: name) else {
+            return
+        }
+        
+        destination.setHero(hero: hero)
+        interactor.saveViewedHero(hero: hero)
     }
 }

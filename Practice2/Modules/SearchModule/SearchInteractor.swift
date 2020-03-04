@@ -64,6 +64,10 @@ class SearchInteractor: SearchInteractorProtocol {
         networkManager.deleteRequest(index: index)
     }
     
+    func saveViewedHero(hero: Hero) {
+        
+    }
+    
     private func cancelSearch() {
         delayer.cancelTimerFire()
         networkManager.cancelCurrentRequest()

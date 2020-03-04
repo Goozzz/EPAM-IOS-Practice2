@@ -9,6 +9,7 @@
 import UIKit
 
 class SearchViewController: UIViewController, SearchViewControllerProtocol {
+    
     @IBOutlet weak var starWarsSearchBar: UISearchBar!
     @IBOutlet weak var resultSearchTableView: UITableView!
     
